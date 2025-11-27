@@ -1,0 +1,56 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts | Boto Hervé</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+      <header>
+        <div class="logo">Boto <span>Hervé</span></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="propos.html">A propos</a></li>
+                <li><a href="projet.html">Projets</a></li>
+            </ul>
+            <a href="cv (1).pdf" class="cv-btn" target="_blank">Voir mon CV</a>
+        </nav>
+    </header>
+    <section class="contact-section">
+        <h2>Me contacter</h2>
+        <p class="subtitle">Tu peux me joindre via les plateformes suivantes :</p>
+        <div class="contact-grid">
+            <a href="tel:+22896292039" class="contact-card">
+                <i class="fas fa-phone"></i><span>Téléphone</span><br>+22896292039
+            </a>
+            <a href="mailto:intelligencecelebre@gmail.com" class="contact-card"><i class="fas fa-enveloppe"></i><span>Email</span><br>intelligencecelebre@gmail.com</a>
+            <a href="https://wa.me/22896292039" target="_blank" class="contact-card"><i class="fas fa-whatsapp"></i><span>Whatsapp</span><br>+22896292039</a>
+            <a href="https://web.facebook.com/herve.soon.2025" target="_blank" class="contact-card"><i class="fas fa-facebook"></i><span>Facebook</span><br>@Herve_Soon</a>
+             <a href="https://www.tiktok.com/@DEV.CYNEL" target="_blank" class="contact-card"><i class="fas fa-tiktok"></i><span>Tiktok</span><br>@Cynel_dev</a>
+                <a href="www.linkedin.com/in/kokou-herve-boto-34283a398" target="_blank" class="contact-card"><i class="fas fa-linkedin"></i><span>Linkedin</span><br>@Boto_kokou_herve</a>  
+             <a href="https://www.instagram.com/@Cynel_dev" target="_blank" class="contact-card"><i class="fas fa-instagram"></i><span>Instagram</span><br>@Cynel_dev</a>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Boto kokou hervé. Tous droits réservés.</p>
+    </footer>
+    <script>
+        const contactCards = document.querySelectorAll('.contact-card');
+        function animateContacts() {
+            const section = document.querySelector('.contact-section');
+            const top = section.getBoundingClientRect().top;
+            const trigger = window.innerHeight - 100;
+            if (top < trigger) {
+                contactCards.forEach((card, i) => {
+                    setTimeout(()=> card.classList.add('visible'), i * 100);
+                });
+                window.removeEventListener('scroll', animateContacts);
+            }
+        }
+        window.addEventListener('scroll', animateContacts);
+        window.addEventListener('load', animateContacts);
+    </script>
+</body>
+</html>

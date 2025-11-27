@@ -1,0 +1,121 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil | Boto Hervé</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Boto <span>Hervé</span></div>
+        <nav>
+            <ul>
+                <li><a href="propos.html">A propos</a></li>
+                <li><a href="projet.html">Projets</a></li>
+                <li><a href="contact.html">Contacts</a></li>
+            </ul>
+            <a href="cv (1).pdf" class="cv-btn" target="_blank">Voir mon CV</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Je suis Développeur Web & Mobile 
+                <br>Boto <span>Hervé</span></h1>
+            <p>Explorer mes réalisations et plongez dans des <br />
+            expériences digitales conçues pour inspirer,<br />
+            séduire et offrir des solutions digitales à chaque projet</p>
+            <a href="projet.html" class="btn">Voir mes Projets</a>
+        </div>
+        <div class="hero-img"><img src="DTZE7192.WEBP" alt="image 1"></div>
+        </div>
+    </section>
+    <section class="services">
+        <h2>Mes services</h2>
+        <div class="service-list">
+            <div class="service-card">
+                <h3>Développement Web</h3>
+                <p>Je développe des sites performants adaptés à vos bésoins et ceux de vos utilisateurs.</p>
+            </div>
+            <div class="service-card">
+                <h3>Développement Mobile</h3>
+                <p>Applications ios et android modernes répondant à vos exigences métiers.</p>
+            </div>
+            <div class="service-card">
+                <h3>Formation</h3>
+                <p>Formations personnalisées pour renforcer vos compétences web, mobile et design.</p>
+            </div>
+        </div>
+    </section>
+    <section class="stats">
+        <h2>Mes Statistiques</h2>
+        <div class="stats-grid">
+            <div class="stats-box">
+                <h3>10+</h3>
+                <p>Projets réalisés</p>
+            </div>
+            <div class="stats-box">
+                <h3>5+</h3>
+                <p>Clients satisfaits</p>
+            </div>
+            <div class="stats-box">
+                <h3>3+</h3>
+                <p>Certifications</p>
+            </div>
+            <div class="stats-box">
+                <h3>1+</h3>
+                <p>Années d'expérience</p>
+            </div>
+        </div>
+    </section>
+    <section class="contact">
+        <h2>Contact</h2>
+        <p>Discuter avec moi</p>
+        <form>
+            <input type="text" placeholder="Nom" required>
+            <input type="email" name="" id="" placeholder="Email" required>
+            <textarea name="" id="" placeholder="Message" required></textarea>
+            <button type="submit" class="btn">Envoyer</button>
+        </form>
+    </section>
+    <section class="avis-section">
+        <h2>Vos avis</h2>
+        <form action="" id="avis-form">
+            <input type="text" name="" id="nom" placeholder="Votre nom" required>
+            <textarea name="" id="message" placeholder="Votre avis Svp" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+        <div class="avis-list">
+    
+        </div>
+    </section>
+  <footer>
+        <p>&copy; 2025 Boto kokou hervé. Tous droits réservés.</p>
+    </footer>
+    <script>
+        const form = document.getElementById('avis-form');
+        const avisList = document.getElementbyId('avis-list');
+
+        const avisStorage = JSON.parse(localStorage.getItem('avis'))|| [];
+        function afficherAvis() {
+            avisList.innerHTML = ''; 
+            avisStorage.forEach(avis => {
+                const div = document.createElement('div');
+                div.classList.add('avis-item');
+                div.innerHTML = <strong>avis.nom :</strong><p>{avis.message}</p>;
+            });
+        }
+        afficherAvis();
+        form.addEventListener('submit', (e) =>{
+            e.preventDefault();
+            const nom = document.getElementbyId('nom').value.trim();
+            const message = document.getElementById('message').value.trim();
+            if (nom && message){
+                const nouvelAvis = {nom, message};
+                avisStorage.push(nouvelAvis);
+                localStorage.setItem('avis', JSON.stringify(avisStorage));
+                afficherAvis();
+            }
+        });
+    </script>
+</body>
+</html>
