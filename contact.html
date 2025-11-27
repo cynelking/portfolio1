@@ -1,56 +1,506 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacts | Boto Hervé</title>
-    <link rel="stylesheet" href="contact.css">
+    <title>Contact | Boto Hervé - Développeur Web & Mobile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0e0f12;
+            color: #f1f1f1;
+            line-height: 1.6;
+            padding: 0 10%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background-color: #1c1c1c;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #7ab8f2;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .cv-btn {
+            padding: 8px 15px;
+            background-color: #7ab8f2;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .cv-btn:hover {
+            background-color: #3b73a8;
+            transform: translateY(-2px);
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        
+        nav a {
+            color: #f1f1f1;
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: #7ab8f2;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #7ab8f2;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .contact-section {
+            padding: 80px 20px;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #7ab8f2;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: #7ab8f2;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 50px;
+            color: #ccc;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, #1a1a1a, #222);
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+            min-height: 150px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(122, 184, 242, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(122, 184, 242, 0.2);
+            border-color: #7ab8f2;
+        }
+        
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+        
+        .contact-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .contact-card i {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #7ab8f2;
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover i {
+            transform: scale(1.2);
+        }
+        
+        .contact-card span {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .contact-info {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.4;
+        }
+        
+        .contact-form-section {
+            background: linear-gradient(135deg, #1a1a1a, #222);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+        }
+        
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #7ab8f2;
+            text-align: center;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ccc;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #0e0f12;
+            color: #fff;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #7ab8f2;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #7ab8f2;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #3b73a8;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(122, 184, 242, 0.3);
+        }
+        
+        .availability {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(122, 184, 242, 0.1), transparent);
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+        
+        .availability h3 {
+            color: #7ab8f2;
+            margin-bottom: 10px;
+        }
+        
+        .availability p {
+            color: #ccc;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #111;
+            color: #777;
+            margin-top: 60px;
+            border-top: 1px solid #222;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: #7ab8f2;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 0 5%;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form-section {
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
 <body>
-      <header>
+    <header>
         <div class="logo">Boto <span>Hervé</span></div>
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="propos.html">A propos</a></li>
+                <li><a href="propos.html">À propos</a></li>
                 <li><a href="projet.html">Projets</a></li>
             </ul>
             <a href="cv (1).pdf" class="cv-btn" target="_blank">Voir mon CV</a>
         </nav>
     </header>
+    
     <section class="contact-section">
-        <h2>Me contacter</h2>
-        <p class="subtitle">Tu peux me joindre via les plateformes suivantes :</p>
+        <h2 class="section-title">Me Contacter</h2>
+        <p class="subtitle">Disponible pour de nouvelles collaborations. N'hésitez pas à me contacter via les plateformes suivantes :</p>
+        
         <div class="contact-grid">
             <a href="tel:+22896292039" class="contact-card">
-                <i class="fas fa-phone"></i><span>Téléphone</span><br>+22896292039
+                <i class="fas fa-phone"></i>
+                <span>Téléphone</span>
+                <div class="contact-info">+228 96 29 20 39</div>
             </a>
-            <a href="mailto:intelligencecelebre@gmail.com" class="contact-card"><i class="fas fa-enveloppe"></i><span>Email</span><br>intelligencecelebre@gmail.com</a>
-            <a href="https://wa.me/22896292039" target="_blank" class="contact-card"><i class="fas fa-whatsapp"></i><span>Whatsapp</span><br>+22896292039</a>
-            <a href="https://web.facebook.com/herve.soon.2025" target="_blank" class="contact-card"><i class="fas fa-facebook"></i><span>Facebook</span><br>@Herve_Soon</a>
-             <a href="https://www.tiktok.com/@DEV.CYNEL" target="_blank" class="contact-card"><i class="fas fa-tiktok"></i><span>Tiktok</span><br>@Cynel_dev</a>
-                <a href="www.linkedin.com/in/kokou-herve-boto-34283a398" target="_blank" class="contact-card"><i class="fas fa-linkedin"></i><span>Linkedin</span><br>@Boto_kokou_herve</a>  
-             <a href="https://www.instagram.com/@Cynel_dev" target="_blank" class="contact-card"><i class="fas fa-instagram"></i><span>Instagram</span><br>@Cynel_dev</a>
+            
+            <a href="mailto:intelligencecelebre@gmail.com" class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+                <div class="contact-info">intelligencecelebre@gmail.com</div>
+            </a>
+            
+            <a href="https://wa.me/22896292039" target="_blank" class="contact-card">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+                <div class="contact-info">+228 96 29 20 39</div>
+            </a>
+            
+            <a href="https://web.facebook.com/herve.soon.2025" target="_blank" class="contact-card">
+                <i class="fab fa-facebook"></i>
+                <span>Facebook</span>
+                <div class="contact-info">@Herve_Soon</div>
+            </a>
+            
+            <a href="https://www.tiktok.com/@DEV.CYNEL" target="_blank" class="contact-card">
+                <i class="fab fa-tiktok"></i>
+                <span>TikTok</span>
+                <div class="contact-info">@Cynel_dev</div>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/kokou-herve-boto-34283a398" target="_blank" class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+                <div class="contact-info">@Boto_kokou_herve</div>
+            </a>
+            
+            <a href="https://www.instagram.com/Cynel_dev" target="_blank" class="contact-card">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+                <div class="contact-info">@Cynel_dev</div>
+            </a>
+        </div>
+        
+        <div class="contact-form-section">
+            <h3 class="form-title">Envoyez-moi un message</h3>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Votre nom</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Votre email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Sujet</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Votre message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Envoyer le message</button>
+            </form>
+        </div>
+        
+        <div class="availability">
+            <h3>Disponibilité</h3>
+            <p>Je suis actuellement disponible pour de nouveaux projets. Réponse garantie sous 24 heures.</p>
         </div>
     </section>
+    
     <footer>
-        <p>&copy; 2025 Boto kokou hervé. Tous droits réservés.</p>
+        <div class="social-links">
+            <a href="https://web.facebook.com/herve.soon.2025" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/kokou-herve-boto-34283a398" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.tiktok.com/@DEV.CYNEL" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/Cynel_dev" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2025 Boto Kokou Hervé. Tous droits réservés.</p>
     </footer>
+    
     <script>
+        // Animation des cartes de contact
         const contactCards = document.querySelectorAll('.contact-card');
+        
         function animateContacts() {
             const section = document.querySelector('.contact-section');
             const top = section.getBoundingClientRect().top;
             const trigger = window.innerHeight - 100;
+            
             if (top < trigger) {
                 contactCards.forEach((card, i) => {
-                    setTimeout(()=> card.classList.add('visible'), i * 100);
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, i * 100);
                 });
                 window.removeEventListener('scroll', animateContacts);
             }
         }
+        
+        // Initialiser l'animation
+        contactCards.forEach(card => {
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+        });
+        
         window.addEventListener('scroll', animateContacts);
         window.addEventListener('load', animateContacts);
+        
+        // Gestion du formulaire de contact
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupérer les valeurs du formulaire
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simulation d'envoi (remplacer par votre solution backend)
+            alert(`Merci ${name} ! Votre message a été envoyé. Je vous répondrai dès que possible à ${email}.`);
+            
+            // Réinitialiser le formulaire
+            contactForm.reset();
+        });
     </script>
 </body>
 </html>

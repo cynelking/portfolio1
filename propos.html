@@ -1,56 +1,152 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A propos | Boto Hervé</title>
+    <title>À Propos | Boto Hervé - Développeur Web & Mobile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="propos.css">
 </head>
 <body>
-     <header>
+    <header>
         <div class="logo">Boto <span>Hervé</span></div>
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="projet.html">Projets</a></li>
-                <li><a href="contact.html">Contacts</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <a href="cv (1).pdf" class="cv-btn" target="_blank">Voir mon CV</a>
         </nav>
     </header>
-  <section class="about">
+    
+    <section class="about">
         <div class="about-text">
-            <h2>A propos de moi</h2>
-            <p>Je suis passionné par le développement Web & mobile, avec un oiel attentif pour  
-          <br>le design UI/UX et l'expérience utilisateur. J'aime transformer les idées en solutions digitales  
-          <br>concrètes et créer des experiences interactives qui captivent et inspirent.</p>
+            <h2 class="section-title">À Propos de Moi</h2>
+            <p>Je suis <span class="highlight">passionné par le développement Web & Mobile</span>, avec un œil attentif pour le design UI/UX et l'expérience utilisateur.</p>
+            <p>J'aime <span class="highlight">transformer les idées en solutions digitales concrètes</span> et créer des expériences interactives qui captivent et inspirent.</p>
+            <p>Avec <span class="highlight">plus d'un an d'expérience</span> et une dizaine de projets réalisés, je m'efforce de créer des solutions qui allient esthétique moderne et performance technique.</p>
+            <p>Mon approche est centrée sur l'utilisateur : chaque pixel, chaque interaction est pensée pour offrir une expérience fluide et engageante.</p>
         </div>
-        <div class="about-img"><img src="NVOE7629.WEBP" alt="image 2"></div>
-    </section>
-        <section class="skills-section">
-        <h2>Mes compétences</h2>
-        <div class="skill-bar">
-            <p>HTML</p>
-            <div class="bar"><div class="fill1" style="width: 92%"></div></div>
-        </div>
-        <div class="skill-bar">
-            <p>CSS</p>
-            <div class="bar"><div class="fill2" style="width: 85%"></div></div>
-        </div>
-        <div class="skill-bar">
-            <p>JavaScript</p>
-            <div class="bar"><div class="fill3" style="width: 60%"></div></div>
-        </div>
-        <div class="skill-bar">
-            <p>PHP</p>
-            <div class="bar"><div class="fill4" style="width: 72%"></div></div>
-        </div>
-        <div class="skill-bar">
-            <p>Node.js</p>
-            <div class="bar"><div class="fill5" style="width: 75%"></div></div>
+        <div class="about-img">
+            <img src="NVOE7629.WEBP" alt="Photo de Boto Hervé">
         </div>
     </section>
-      <footer>
-        <p>&copy; 2025 Boto kokou hervé. Tous droits réservés.</p>
+    
+    <section class="skills-section">
+        <h2>Mes Compétences Techniques</h2>
+        <div class="skill-bar">
+            <div class="skill-header">
+                <div class="skill-name"><i class="fab fa-html5"></i> HTML5</div>
+                <div class="skill-percent">92%</div>
+            </div>
+            <div class="bar">
+                <div class="fill" data-width="92"></div>
+            </div>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-header">
+                <div class="skill-name"><i class="fab fa-css3-alt"></i> CSS3</div>
+                <div class="skill-percent">85%</div>
+            </div>
+            <div class="bar">
+                <div class="fill" data-width="85"></div>
+            </div>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-header">
+                <div class="skill-name"><i class="fab fa-js-square"></i> JavaScript</div>
+                <div class="skill-percent">60%</div>
+            </div>
+            <div class="bar">
+                <div class="fill" data-width="60"></div>
+            </div>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-header">
+                <div class="skill-name"><i class="fab fa-php"></i> PHP</div>
+                <div class="skill-percent">72%</div>
+            </div>
+            <div class="bar">
+                <div class="fill" data-width="72"></div>
+            </div>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-header">
+                <div class="skill-name"><i class="fab fa-node-js"></i> Node.js</div>
+                <div class="skill-percent">75%</div>
+            </div>
+            <div class="bar">
+                <div class="fill" data-width="75"></div>
+            </div>
+        </div>
+        
+        <div class="other-skills">
+            <h3>Autres Compétences</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fab fa-react"></i>
+                    <span>React</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-database"></i>
+                    <span>MySQL</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-git-alt"></i>
+                    <span>Git</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Responsive Design</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>UI/UX Design</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-search"></i>
+                    <span>SEO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <h2>Intéressé par mon profil ?</h2>
+        <p>N'hésitez pas à me contacter pour discuter de votre projet ou pour toute collaboration.</p>
+        <a href="contact.html" class="btn">Me Contacter</a>
+    </section>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2025 Boto Kokou Hervé. Tous droits réservés.</p>
     </footer>
+    
+    <script>
+        // Animation des barres de compétences au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.fill');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.getAttribute('data-width');
+                        entry.target.style.width = width + '%';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            skillBars.forEach(bar => {
+                observer.observe(bar);
+            });
+        });
+    </script>
 </body>
 </html>
